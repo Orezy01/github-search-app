@@ -1,15 +1,33 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+ <nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <span class="logo">SearchApp</span>
+    </a>
+    <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <i class='bx bx-menu'></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ms-auto">
+        <router-link class="nav-link" to="/">Home</router-link>
+        <router-link class="nav-link" to="/SearchRepository">Search Repository</router-link>
+        <router-link class="nav-link" to="/Repository">Repositories</router-link>
+      </div>
+    </div>
+  </div>
+</nav>
+<router-view />
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import "./assets/global.css"
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    // Home
   }
 }
 </script>
@@ -21,6 +39,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  /* margin-top: 60px; */
+}
+body {
+  margin: 0;
+  padding: 0;
 }
 </style>
