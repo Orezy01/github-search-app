@@ -158,7 +158,10 @@ const Prev = () => {
       btns,
       Editbtns,
       Prevbtn,
-      Nextbtn
+      Nextbtn,
+      changePage,
+      Next,
+      Prev
     };
   },
 };
