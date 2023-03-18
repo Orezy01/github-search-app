@@ -1,7 +1,7 @@
 <template>
   <RepositorySkeleton v-if="isLoading"/>
   <div v-else>
-    <div v-for="(itm, i) in data.items" :key="i">
+    <div v-for="(itm, i) in displayed[currentPosition - 1]" :key="i">
       <div class="co-md-6 d-flex justify-content-center cbl" key={{itm.id}}>
         <div class="card m-2 cbl text center">
           <div class="profile-card">
@@ -22,12 +22,30 @@
         </div>
       </div>
     </div>
+
+    <section :class="{ pagination: true }">
+            <ul>
+                <li v-if="currentPosition > 1" :class="{ prev: true }">
+                    <button @click="Prev">
+                        {{ Prevbtn }}
+                    </button>
+                </li>
+                <li v-for="btn in Editbtns" :key="btn">
+                    <button @click="changePage(btn)">
+                      {{ btn }}
+                    </button>
+                </li>
+                <li v-if="currentPosition < displayed.length" :class="{ next: true }">
+                  <button @click="Next">{{ Nextbtn }}</button>
+                </li>
+            </ul>
+        </section>
   </div>
 </template>
 
 <script>
 import RepositorySkeleton from '@/components/RepositorySkeleton.vue';
-import { ref, reactive, watchEffect } from 'vue';
+import { ref, reactive, watchEffect, onUpdated } from 'vue';
 
 export default {
   components: {
@@ -40,6 +58,17 @@ export default {
     });
 
     const isLoading = ref(true)
+    const length = ref(0)
+    const neededLength = ref(4)
+    const positions = ref(0)
+    const currentPosition = ref(1)
+    const Splice = ref([])
+    const displayed = ref([])
+    const btns = ref([])
+    const Editbtns = ref([])
+    const Prevbtn = '<'
+    const Nextbtn = '>'
+
 
     // Define a function to fetch the data from the API
     watchEffect(async () => {
@@ -48,24 +77,124 @@ export default {
         const jsonData = await response.json();
         data.items = jsonData;
         if (data.items.length > 0) {
-          isLoading.value = false; 
+          isLoading.value = false;
+          Splice.value = [...data.items] //Duplicate the original repos container
+            length.value = data.items.length //Length of the total repos fetched
+            positions.value = Math.ceil(length.value / neededLength.value) // Length / 5, five repos is needed in each page
+            for (let i = 0; i < positions.value; i++) {
+                displayed.value.push(Splice.value.splice(0, neededLength.value))
+                btns.value.push(i + 1)
+                if (i < 3) {
+                    Editbtns.value.push(i + 1)
+                    continue
+                }
+            }
         }
       } catch (error) {
         console.log(error)
       }
     })
 
+onUpdated(() => {
+    posts.value = document.querySelectorAll('.pagination ul li button')
+    posts.value.forEach((post) => {
+        post.removeAttribute('id')
+        if (post.innerText === `${ currentPosition.value }`) {
+        post.setAttribute("id", 'activePage')
+    }
+})
+})
+
+    const changePage = (n) => {
+    currentPosition.value = n
+    //set currentPosition value to n
+    posts.value.forEach((post) => {
+        post.removeAttribute('id')
+        if (post.innerHTML === `${ n }`) {
+        post.setAttribute("id", 'activePage') 
+        // give the current and active post the attribute (id, activePage)
+        }
+    })
+}
+
+const Next = () => {
+    if (currentPosition.value < displayed.value.length + 1) {
+        currentPosition.value += 1
+        //Add one from the currentposition value
+    }
+    if (currentPosition.value > 3 && currentPosition.value < btns.value.length + 1) {
+        //if currentposition value is great than 3 and currentposition is less than the number of the btns present.
+        Editbtns.value.forEach((btn, index) => {
+            btn = btn + 1 //Add one to the present element in editbtns
+            Editbtns.value.splice(index, 1, btn) // then replace the previous btn starting from index of the btn with the new btn
+        })
+    }
+}
+
+const Prev = () => {
+    if (currentPosition.value < displayed.value.length + 1 && currentPosition.value > 1) {
+        currentPosition.value -= 1
+        //subtract one from the currentposition value
+    }
+    if (Editbtns.value[0] !== 1) {
+        //if editbtns first element is not 0
+        Editbtns.value.forEach((btn, index) => {
+            btn = btn - 1 //subtract one from the present element in editbtns
+            Editbtns.value.splice(index, 1, btn) // then replace the previous btn starting from index of the btn with the new btn
+        })
+    }
+}
     // Call the fetchData function when the component is mounted
 
     return {
       data,
       isLoading,
+      Splice,
+      length,
+      neededLength,
+      positions,
+      currentPosition,
+      displayed,
+      btns,
+      Editbtns,
+      Prevbtn,
+      Nextbtn
     };
   },
 };
 </script>
 
 <style>
+.pagination {
+    width: 90%;
+    height: 35px;
+    margin: 20px 0;
+}
+.pagination ul {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    height: 100%;
+}
+.pagination ul li {
+    width: 20%;
+    height: 100%;
+}
+.pagination ul li button {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 10px;
+    font-weight: 700;
+}
+#activePage {
+    background-color: blue;
+    color: white;
+}
 .button-85 {
     padding: 0.6em 2em;
     border: none;
