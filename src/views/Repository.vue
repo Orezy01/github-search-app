@@ -21,9 +21,8 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <section :class="{ pagination: true }">
+      <section :class="{ pagination: true }">
             <ul>
                 <li v-if="currentPosition > 1" :class="{ prev: true }">
                     <button @click="Prev">
@@ -40,6 +39,9 @@
                 </li>
             </ul>
         </section>
+    </div>
+
+    
   </div>
 </template>
 
