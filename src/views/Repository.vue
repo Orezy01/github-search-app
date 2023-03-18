@@ -169,9 +169,10 @@ const Prev = () => {
 
 <style>
 .pagination {
-    width: 90%;
+    width: 300px;
     height: 35px;
     margin: 20px 0;
+    
 }
 .pagination ul {
     display: flex;
@@ -182,6 +183,7 @@ const Prev = () => {
 .pagination ul li {
     width: 20%;
     height: 100%;
+    list-style: none;
 }
 .pagination ul li button {
     width: 100%;
@@ -191,11 +193,12 @@ const Prev = () => {
     align-items: center;
     justify-content: center;
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 14px;
     font-weight: 700;
+    
 }
 #activePage {
-    background-color: blue;
+    background-color: #FCCC73;
     color: white;
 }
 .button-85 {

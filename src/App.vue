@@ -18,7 +18,7 @@
   </div>
 </nav>
 <router-view />
-<pagination />
+
 
 </template>
 
@@ -26,7 +26,7 @@
 import { useHead } from '@vueuse/head'
 import { reactive , computed} from 'vue'
 import "./assets/global.css"
-import pagination from "./views/pagination.vue"
+
 
 const siteData = reactive({
   title: 'Github API App',
