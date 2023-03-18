@@ -23,12 +23,7 @@ const routes = [
         component: Repository
     },
     
-    // redirect
-    // {
-    //     path: '/all-jobs',
-    //     redirect: '/jobs' 
-    // },
-    // catch 404
+    
     {
         path: '/:catchAll(.*)',
         name: 'NotFound',
