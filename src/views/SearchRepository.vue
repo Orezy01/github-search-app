@@ -11,34 +11,36 @@
     Loading Data...
   </div>
   <div v-else>
-    {{repoData.created_at}}
+    {{fetchData.created_at}}
     <h2>{{  }}</h2>
   </div>
   </div>
-  
- 
-  
 </div>
 
   </div>
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, onUnmounted} from 'vue'
 export default {
 setup() {
  const fetchData = ref([]);
- const isLoading = ref(true)
+ const isLoading = ref(false)
  const searchInput = ref('');
-
+ let id;
+ 
  const getData = async (name) => {
   if(name !== '' && name !== null){
  try {
+  isLoading.value = true
   const res = await fetch(`https://api.github.com/users/${name}`)
   fetchData.value = await res.json()
-   if(fetchData.value.length > 0){
-  isLoading.value = false
-}
+  if(fetchData.value.message === 'Not Found'){
+   alert('User not found')
+  }
+  id = setTimeout(()=>{
+    isLoading.value = false
+  }, 2000)
  } catch (error) {
   console.log(error)
  }
@@ -47,7 +49,7 @@ setup() {
    alert('Please enter a valid username')
   }
  }
-
+onUnmounted(()=>{clearTimeout(id)})
     return {
       fetchData ,
       isLoading,
