@@ -9,9 +9,9 @@
   <div v-if="isLoading">
     Loading Data...
   </div>
-  <div v-else v-for="data in fetchData" :key="data.id">
+  <!--<div v-else v-for="data in fetchData" :key="data.id">
     {{ data }}
-  </div>
+  </div>-->
 </div>
 
   </div>
@@ -30,7 +30,10 @@ setup() {
  try {
   const res = await fetch(`https://api.github.com/users/${name}`)
   fetchData.value = await res.json()
+  console.log(fetchData.value)
+  if(fetchData.value.length > 0){
   isLoading.value = false
+  }
  } catch (error) {
   console.log(error)
  }
