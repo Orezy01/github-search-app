@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isLoading">Loading...</div>
+  <RepositorySkeleton v-if="isLoading">
   <div v-else>
     <div v-for="(itm, i) in displayed[currentPosition - 1]" :key="i">
       <div class="co-md-6 d-flex justify-content-center cbl">
@@ -43,13 +43,13 @@
 </template>
 
 <script>
-//import RepositorySkeleton from '@/components/RepositorySkeleton.vue';
+import RepositorySkeleton from '@/components/RepositorySkeleton.vue';
 import { ref, reactive, watchEffect, onUpdated } from 'vue';
 
 export default {
-  //components: {
-    //RepositorySkeleton
-  //},
+ components: {
+   RepositorySkeleton
+ },
   setup() {
     // Define a reactive object to store the fetched data
     const data = reactive({
