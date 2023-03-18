@@ -2,7 +2,7 @@
  <nav class="navbar navbar-expand-lg navbar-light bg-white">
   <div class="container">
     <a class="navbar-brand" href="#">
-      <font-awesome-icon icon="fa-brands fa-github-alt" />
+        
       <span class="logo">SearchApp</span>
     </a>
     <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

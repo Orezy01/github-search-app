@@ -7,7 +7,7 @@
             <div class="text-label">
               Get The Best Search Experience
             </div>
-            <div class="text-hero-bold">Grow Up Mind In The Future</div>
+            <div class="text-hero-bold">The Place For Anyone From Anywhere To Search Repositories</div>
             <div class="text-hero-regular">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore quasi culpa mollitia aspernatur esse molestias veniam quam voluptatibus accusamus iusto!
             </div>
