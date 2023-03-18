@@ -5,15 +5,15 @@
         <div class="col-md-6">
           <div class="copy" data-aos="fade-up" data-aos-duration="3000">
             <div class="text-label">
-              Changing Your Business Is More Better
+              Get The Best Search Experience
             </div>
             <div class="text-hero-bold">Grow Up Mind In The Future</div>
             <div class="text-hero-regular">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore quasi culpa mollitia aspernatur esse molestias veniam quam voluptatibus accusamus iusto!
             </div>
             <div class="cta">
-              <a href="#" class="btn btn-primary shadow-none">Explore Now</a>
-              <a href="#" class="btn btn-secondary shadow-none ms-3">Explore Now</a>
+              <a href="./SearchRepository.vue" class="btn btn-primary shadow-none">Explore Now</a>
+              <a href="#" class="btn btn-secondary shadow-none ms-3">About Me</a>
             </div>
           </div>
         </div>
