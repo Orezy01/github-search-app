@@ -1,7 +1,5 @@
 <template>
-  <div v-if="isLoading">
-    <RepositorySkeleton />
-  </div>
+  <RepositorySkeleton v-if="isLoading"/>
   <div v-else>
     <div v-for="(itm, i) in data.items" :key="i">
       <div class="co-md-6 d-flex justify-content-center cbl" key={{itm.id}}>
@@ -16,7 +14,7 @@
             <p class="card-text">Description: {{ itm.description === null ? 'No Description' : itm.description }}</p>
            
 
-            <a href={{itm.html_url}} class="link-btn" target="_blank" rel="noreferrer">
+            <a :href="itm.html_url" class="link-btn" target="_blank" rel="noreferrer">
               <button class="button-85">View on github</button>
             </a>
 
