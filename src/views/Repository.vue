@@ -182,4 +182,18 @@ export default {
   .cbl {
     background: linear-gradient(to right bottom, rgba(255,255,255,0.5), rgba(255, 255, 255, 0.3));
   }
+
+  @media (max-width: 576px) {
+  .profile-image {
+    width: 30%;
+    float: left;
+  }
+  .profile-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    border: 5px solid #FBC257;
+    padding: 5px;
+  }
+  }
 </style>
