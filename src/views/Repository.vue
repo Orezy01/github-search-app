@@ -1,5 +1,5 @@
 <template>
-  <RepositorySkeleton v-if="isLoading">
+  <RepositorySkeleton v-if="isLoading" />
   <div v-else>
     <div v-for="(itm, i) in displayed[currentPosition - 1]" :key="i">
       <div class="co-md-6 d-flex justify-content-center cbl">
