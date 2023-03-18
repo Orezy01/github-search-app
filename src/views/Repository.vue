@@ -2,7 +2,7 @@
   <RepositorySkeleton v-if="isLoading"/>
   <div v-else>
     <div v-for="(itm, i) in displayed[currentPosition - 1]" :key="i">
-      <div class="co-md-6 d-flex justify-content-center cbl" key={{itm.id}}>
+      <div class="co-md-6 d-flex justify-content-center cbl">
         <div class="card m-2 cbl text center">
           <div class="profile-card">
             <div class="profile-image">
