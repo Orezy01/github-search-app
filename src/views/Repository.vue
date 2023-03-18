@@ -61,6 +61,7 @@ export default {
     const length = ref(0)
     const neededLength = ref(4)
     const positions = ref(0)
+    const posts = ref(null)
     const currentPosition = ref(1)
     const Splice = ref([])
     const displayed = ref([])
