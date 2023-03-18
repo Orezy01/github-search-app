@@ -43,13 +43,13 @@
 </template>
 
 <script>
-import RepositorySkeleton from '@/components/RepositorySkeleton.vue';
+//import RepositorySkeleton from '@/components/RepositorySkeleton.vue';
 import { ref, reactive, watchEffect, onUpdated } from 'vue';
 
 export default {
-  components: {
-    RepositorySkeleton
-  },
+  //components: {
+    //RepositorySkeleton
+  //},
   setup() {
     // Define a reactive object to store the fetched data
     const data = reactive({
