@@ -1,5 +1,5 @@
 <template>
-  <RepositorySkeleton v-if="isLoading"/>
+  <div v-if="isLoading">Loading...</div>
   <div v-else>
     <div v-for="(itm, i) in displayed[currentPosition - 1]" :key="i">
       <div class="co-md-6 d-flex justify-content-center cbl">
@@ -21,8 +21,8 @@
           </div>
         </div>
       </div>
-
-      <section :class="{ pagination: true }">
+    </div>
+    <section :class="{ pagination: true }">
             <ul>
                 <li v-if="currentPosition > 1" :class="{ prev: true }">
                     <button @click="Prev">
@@ -39,9 +39,6 @@
                 </li>
             </ul>
         </section>
-    </div>
-
-    
   </div>
 </template>
 
