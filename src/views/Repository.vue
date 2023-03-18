@@ -1,30 +1,33 @@
 <template>
-  <div v-for="(itm,i) in data.items" :key="i">
-        <div className="co-md-6 d-flex justify-content-center" key={{itm.id}}>
-         <div className="card m-2 cbl text center">
-           <div className="card-body">
+  <div v-if="isLoading">
+    Loading Data...
+  </div>
+  <div v-else>
+    <div v-for="(itm, i) in data.items" :key="i">
+      <div className="co-md-6 d-flex justify-content-center" key={{itm.id}}>
+        <div className="card m-2 cbl text center">
+          <div className="card-body">
             <img className='my_avatar' :src="itm.owner.avatar_url" alt="profile_image" :width="60" :height="60" />
             <!--You can change the width and height of this img later-->
-             <span className="card-number">ID: {{itm.id}}</span> 
-             <h5 className="card-title mb-4">Repository Name: {{itm.name}}</h5>
-             <!--The better way to use text interpolation is using {{  }} not one {}-->
-             <p className="card-text">Description: {{itm.description === null ? 'No Description': itm.description}}</p>
-             <!--What I did here was, if description is null 'no description' should be shown or the description if it is present-->
-             
-               <a href={{itm.html_url}} className="link-btn" target="_blank" rel="noreferrer">
-                <button className="button-85" >View on github</button>
-               </a>
-             
-           </div>
-         </div>
-       </div>
-      
+            <span className="card-number">ID: {{ itm.id }}</span>
+            <h5 className="card-title mb-4">Repository Name: {{ itm.name }}</h5>
+            <!--The better way to use text interpolation is using {{  }} not one {}-->
+            <p className="card-text">Description: {{ itm.description === null ? 'No Description' : itm.description }}</p>
+            <!--What I did here was, if description is null 'no description' should be shown or the description if it is present-->
+
+            <a href={{itm.html_url}} className="link-btn" target="_blank" rel="noreferrer">
+              <button className="button-85">View on github</button>
+            </a>
+
+          </div>
+        </div>
+      </div>
     </div>
-  
+  </div>
 </template>
 
 <script>
-import { reactive, watchEffect } from 'vue';
+import { ref, reactive, watchEffect } from 'vue';
 
 export default {
   setup() {
@@ -33,14 +36,19 @@ export default {
       items: [],
     });
 
+    const isLoading = ref(true)
+
     // Define a function to fetch the data from the API
     watchEffect(async () => {
       const response = await fetch('https://api.github.com/users/Orezy01/repos');
       try {
         const jsonData = await response.json();
         data.items = jsonData;
+        if (data.items.length > 0) {
+          isLoading.value = false; 
+        }
       } catch (error) {
-        console.log(error)  
+        console.log(error)
       }
     })
 
@@ -48,11 +56,10 @@ export default {
 
     return {
       data,
+      isLoading,
     };
   },
 };
 </script>
 
-<style>
-
-</style>
+<style></style>
