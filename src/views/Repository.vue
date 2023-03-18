@@ -8,12 +8,14 @@
             <div class="profile-image">
             <img class='my_avatar' :src="itm.owner.avatar_url" alt="profile_image" :width="60" :height="60" />
           </div>
+          <div>
           <span>Repository Title</span>
             <div class="profile-info card-title mb-4">Repository Name: {{ itm.name }}</div>
+          </div>
+           <!-- <br>
+            <p class="card-text">Description: {{ itm.description === null ? 'No Description' : itm.description }}</p> -->
            
-            <p class="card-text">Description: {{ itm.description === null ? 'No Description' : itm.description }}</p>
-           
-
+            <br><br>
             <a :href="itm.html_url" class="link-btn" target="_blank" rel="noreferrer">
               <button class="button-85">View on github</button>
             </a>
@@ -280,7 +282,7 @@ const Prev = () => {
   }
 
   .profile-image {
-    width: 10%;
+    width: 20%;
     float: left;
   }
   .profile-image img {
