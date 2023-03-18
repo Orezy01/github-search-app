@@ -5,11 +5,11 @@
         <div class="col-md-6">
           <div class="copy" data-aos="fade-up" data-aos-duration="3000">
             <div class="text-label">
-              Get The Best Search Experience
+              Get The Best  Experience
             </div>
-            <div class="text-hero-bold">The Place For Anyone From Anywhere To Search Repositories</div>
+            <div class="text-hero-bold">The Place For Anyone From Anywhere To View Repositories</div>
             <div class="text-hero-regular">
-              Check out my search Repositories page to see my project
+              Check out my  Repositories page to see my project
             </div>
             <!-- <div class="cta"> -->
               <!-- <a href="./SearchRepository.vue" class="btn btn-primary shadow-none">Explore Now</a> -->
