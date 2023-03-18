@@ -9,12 +9,12 @@
             </div>
             <div class="text-hero-bold">The Place For Anyone From Anywhere To Search Repositories</div>
             <div class="text-hero-regular">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore quasi culpa mollitia aspernatur esse molestias veniam quam voluptatibus accusamus iusto!
+              Check out my search Repositories page to see my project
             </div>
-            <div class="cta">
-              <a href="./SearchRepository.vue" class="btn btn-primary shadow-none">Explore Now</a>
-              <a href="#" class="btn btn-secondary shadow-none ms-3">About Me</a>
-            </div>
+            <!-- <div class="cta"> -->
+              <!-- <a href="./SearchRepository.vue" class="btn btn-primary shadow-none">Explore Now</a> -->
+              <!-- <a href="#" class="btn btn-secondary shadow-none ms-3">About Me</a> -->
+            <!-- </div> -->
           </div>
         </div>
         <div class="col-md-6" data-aos="fade-up" data-aos-duration="3000">

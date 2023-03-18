@@ -11,24 +11,27 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ms-auto">
         <router-link class="nav-link" to="/">Home</router-link>
-        <router-link class="nav-link" to="/SearchRepository">Search Repository</router-link>
+        <!-- <router-link class="nav-link" to="/SearchRepository">Search Repository</router-link> -->
         <router-link class="nav-link" to="/Repository">Repositories</router-link>
       </div>
     </div>
   </div>
 </nav>
 <router-view />
+<pagination />
 
 </template>
 
 <script>
 import "./assets/global.css"
+import pagination from "./views/pagination.vue"
 
 
 export default {
   name: 'App',
   components: {
     // Home
+    pagination
   }
 }
 </script>
